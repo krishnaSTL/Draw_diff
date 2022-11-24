@@ -15,7 +15,7 @@ def get_divider(d=3):
     plt.hlines(y_divider1,x,x+len,linestyles='solid',colors='black',lw=1)
     plt.hlines(y_divider2,x,x+len,linestyles='solid',colors='black',lw=1)
 
-def get_road(d1=9,d2=9):
+def get_road(d1=9,d2=9,d3=8.5):
     global y_road1,y_road2
     y_road1=y_divider1+d1
     y_road2=y_divider2-d2
@@ -25,6 +25,9 @@ def get_road(d1=9,d2=9):
     ##Drawing mid-road lines
     plt.hlines(y_divider1+d1/2,x,x+len,linestyles='dashed',colors='blue',lw=1)
     plt.hlines(y_divider2-d2/2,x,x+len,linestyles='dashed',colors='blue',lw=1)
+
+    ##Get ofc line
+    plt.hlines(y_divider2-d2/2-d3,x,x+len,linestyles='dashed',colors='red',lw=2)
 
 
 
@@ -53,16 +56,14 @@ def get_objects_roadside(d=1):
         plt.text(float(df['Chainage'][i]),yr,df['RHS'][i],fontsize = 9,color='Black')
         plt.text(float(df['Chainage'][i]),yl,df['LHS'][i],fontsize = 9,color='Black')
 
- 
-
 
 def draw_sld():
     try:
         get_road(lwidth,rwidth)  #Drawing roads (left +Right)
         get_roadside(lwidth,rwidth) #Drawing roadside lines (left + Right)
         get_divider(d_half) #Drawing divider on road (at half of divider width)
-        #get_objects_roadside() #Drawing road side objects (if images)
-        #get_ofc_line(d)
+        get_objects_roadside() #Drawing road side objects (if images)
+        get_ofc_line(d)
         #get_culvert()
         #get_service_road(width,side,name)
         #get_fixed_things(coords)
@@ -82,6 +83,7 @@ get_road()
 get_roadside()
 outer_box(7)
 get_objects_roadside()
+
 #plt.hlines(3,0,1,linestyles='solid',colors='black',lw=1)
 plt.show()
 
