@@ -45,7 +45,7 @@ def outer_box(d=3):
 def get_objects_roadside(d=1):
     yl=y_roadside1+d
     yr=y_roadside2-d-d/2    
-    df=pd.read_excel(r"C:\Users\Aditya.gupta\Documents\Untitled 1.xls")
+    df=pd.read_excel(r'Untitled 1.xls')
     #print(df.index)
     #print(df,len(df.index))
     for i in df.index:
