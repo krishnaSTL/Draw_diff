@@ -144,7 +144,7 @@ class road_param:
 
 
 
-Road1=road_param(2,4)
+Road1=road_param(2,8)
 print(Road1.pos_y)
 Road1.draw()
 plt.gca().axes.get_yaxis().set_visible(False)
