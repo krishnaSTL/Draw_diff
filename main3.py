@@ -87,7 +87,7 @@ def get_culvert():
             imagebox3 = OffsetImage(img2,zoom=0.15)
             ab1 = AnnotationBbox(imagebox1, (tx1, ty1), frameon = False)
             ab2 = AnnotationBbox(imagebox2, (tx2, ty2), frameon = False)
-            ab3=AnnotationBbox(imagebox3,(tx1,ty2-50),frameon=False)
+            ab3=AnnotationBbox(imagebox3,(tx1,ty2-50),frameon=False,rotation=90)
             ax.add_artist(ab1)
             ax.add_artist(ab2)
             ax.add_artist(ab3)
