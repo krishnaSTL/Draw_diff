@@ -72,7 +72,7 @@ def get_chainage(d=700):
         plt.text(float(df['Chainage'][i]),yr,df['Chainage'][i],fontsize = 10,color='Black',rotation=90)
 
 def get_culvert():
-    path=r"C:\Users\Aditya.gupta\Desktop\Fun Projects\Draw_diff\rc.jpg.png"
+    path=r"MS_box.png"
     path2=r'culvert_part.png'
     df=get_df()
     for i in df.index:
@@ -84,10 +84,13 @@ def get_culvert():
             tx2, ty2 = df['Chainage'][i]+20,y_roadside2-250
             imagebox1 = OffsetImage(img, zoom = 0.15)
             imagebox2 = OffsetImage(img, zoom = 0.15)
+            imagebox3 = OffsetImage(img2,zoom=0.15)
             ab1 = AnnotationBbox(imagebox1, (tx1, ty1), frameon = False)
             ab2 = AnnotationBbox(imagebox2, (tx2, ty2), frameon = False)
+            ab3=AnnotationBbox(imagebox3,(tx1,ty2-50),frameon=False)
             ax.add_artist(ab1)
             ax.add_artist(ab2)
+            ax.add_artist(ab3)
             
 
 
