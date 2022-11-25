@@ -14,10 +14,10 @@ plt.hlines(150,10,400,linestyles='solid',colors='black',lw=1)
 plt.hlines(130,20,400,linestyles='solid',colors='red',lw=1)
 
 imgplot = [None] * len(imageList)
-for i in range(3):
+for i in range(1):
     imageFile = imageList[i]
     img=mpimg.imread(imageFile)
-    tx, ty = coordinatesList[i]
+    tx, ty = 50,50
     ax.imshow(img, extent=(tx, tx + 20, ty, ty + 20))
 
 plt.show()
