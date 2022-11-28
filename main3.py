@@ -209,8 +209,6 @@ def coords(x=1980,y=3100):
             
 def get_fixed_things(d=0):
     path =r"MS_box.png"
-    imageList = [path, path]
-    coordinates= [[2100,1500]]
     plt.text(2860,650,"To Mansar>>",fontsize=11,color='Blue')
     plt.text(2000,-800,"<< To Kurai",fontsize=11,color='Blue')
     plt.text(2250,-780,"<< NH-44 >>",fontsize=8,color='Blue')
@@ -253,9 +251,9 @@ def draw_sld():
 
 
 
-fig=plt.figure(figsize=(3000,2000))   
+fig=plt.figure(figsize=(200, 50))   
 ax = plt.gca()
-ax.set_xlim(x-90, x+len+90)
+#ax.set_xlim(x-90, x+len+90)
 plt.axis('off')
 get_divider()
 get_road()
@@ -269,8 +267,10 @@ get_soil()
 get_serviceroad()
 get_fixed_things()
 coords()
-#plt.hlines(3,0,1,linestyles='solid',colors='black',lw=1)
+fig1 = plt.gcf()
 plt.show()
+plt.draw()
+fig1.savefig('tessstttyyy.png', dpi=300)
 
 
 
