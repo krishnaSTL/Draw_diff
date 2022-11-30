@@ -79,8 +79,8 @@ def get_objects_roadside(d1=500,d2=700):
     #print(df,len(df.index))
     for i in df.index:
         #print(float(df['Chainage'][i]),d,df['RHS'][i])
-        plt.text(float(df['Chainage'][i]),yr-d1,df['Road side objects(RHS)'][i],fontsize = 9,color='Black')
-        plt.text(float(df['Chainage'][i]),yl+d1,df['Road side objects (LHS)'][i],fontsize = 9,color='Black')
+        plt.text(float(df['Chainage'][i]),yr-d1,df['Road side objects(RHS)'][i],fontsize = 10,color='Black')
+        plt.text(float(df['Chainage'][i]),yl+d1,df['Road side objects (LHS)'][i],fontsize =10,color='Black')
         d=d2
         if df['Road side objects(RHS)'][i] == 'Forest':
             path = r"Forest.png"
@@ -223,6 +223,20 @@ def get_fixed_things(d=0):
     plt.text(2900,-1300,"Gravel",fontsize=9,color='Green')
     plt.text(2500,-1300,"Gravel",fontsize=9,color='Green')          
 
+def get_ms():
+    df=get_df()
+    path=r"MS_box.png"
+    img = mpimg.imread(path)
+    imagebox1 = OffsetImage(img, zoom = 0.15)
+    i=df['Chainage'].iloc[0]
+    f=df['Chainage'].iloc[-1]
+    plt.text(i-50,y_road1,"MS-"+str(round(i/1000)),fontsize = 9,color='Black')
+    plt.text(f+100,y_road1,"MS-"+str(round(f/1000)),fontsize = 9,color='Black')
+    ab1 = AnnotationBbox(imagebox1,(i-35,y_road1+300), frameon = False)
+    a1 = AnnotationBbox(imagebox1,(f+115,y_road1+300), frameon = False)
+    ax.add_artist(ab1)  
+    ax.add_artist(a1)
+
 
 
 def get_soil(d=1600):
@@ -251,9 +265,9 @@ def draw_sld():
 
 
 
-fig=plt.figure(figsize=(3000,2000))   
+fig=plt.figure(figsize=(200,50))   
 ax = plt.gca()
-ax.set_xlim(x-90, x+len+90)
+# ax.set_xlim(x-90, x+len+90)
 plt.axis('off')
 get_divider()
 get_road()
@@ -266,9 +280,14 @@ get_bridge()
 get_soil()
 get_serviceroad()
 get_fixed_things()
-coords()
+get_ms()
+# coords()
+fig1=plt.gcf()
+
 #plt.hlines(3,0,1,linestyles='solid',colors='black',lw=1)
 plt.show()
+plt.draw()
+fig1.savefig('jjjj.png',dpi=300)
 
 
 
